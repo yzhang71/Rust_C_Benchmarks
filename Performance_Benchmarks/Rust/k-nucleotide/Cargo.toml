@@ -1,0 +1,18 @@
+[package]
+name = "k-nucleotide-O3"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.1"
+tokio-threadpool = "0.1.18"
+itertools = "0.10.2"
+num = "0.4"
+hashbrown = "0.11"
+futures-cpupool = "0.1.8"
+fxhash = "0.2.1"
+num_cpus = "1.13.1"
+num-traits = "0.2.15"
+scoped_threadpool = "0.1.9"
