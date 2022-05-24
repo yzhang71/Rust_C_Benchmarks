@@ -1,0 +1,7 @@
+use std::fmt::Debug;
+
+fn foo<T>(x: impl Debug) { }
+
+fn main() {
+    foo::<String>('a'); //~ ERROR cannot provide explicit generic arguments
+}

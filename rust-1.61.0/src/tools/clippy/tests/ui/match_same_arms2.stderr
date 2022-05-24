@@ -1,0 +1,196 @@
+error: this match arm has an identical body to the `_` wildcard arm
+  --> $DIR/match_same_arms2.rs:11:9
+   |
+LL | /         42 => {
+LL | |             foo();
+LL | |             let mut a = 42 + [23].len() as i32;
+LL | |             if true {
+...  |
+LL | |             a
+LL | |         },
+   | |_________^ help: try removing the arm
+   |
+   = note: `-D clippy::match-same-arms` implied by `-D warnings`
+   = help: or try changing either arm body
+note: `_` wildcard arm here
+  --> $DIR/match_same_arms2.rs:20:9
+   |
+LL | /         _ => {
+LL | |             //~ ERROR match arms have same body
+LL | |             foo();
+LL | |             let mut a = 42 + [23].len() as i32;
+...  |
+LL | |             a
+LL | |         },
+   | |_________^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:34:9
+   |
+LL |         51 => foo(), //~ ERROR match arms have same body
+   |         --^^^^^^^^^
+   |         |
+   |         help: try merging the arm patterns: `51 | 42`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:33:9
+   |
+LL |         42 => foo(),
+   |         ^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:40:9
+   |
+LL |         None => 24, //~ ERROR match arms have same body
+   |         ----^^^^^^
+   |         |
+   |         help: try merging the arm patterns: `None | Some(_)`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:39:9
+   |
+LL |         Some(_) => 24,
+   |         ^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:62:9
+   |
+LL |         (None, Some(a)) => bar(a), //~ ERROR match arms have same body
+   |         ---------------^^^^^^^^^^
+   |         |
+   |         help: try merging the arm patterns: `(None, Some(a)) | (Some(a), None)`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:61:9
+   |
+LL |         (Some(a), None) => bar(a),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:67:9
+   |
+LL |         (Some(a), ..) => bar(a),
+   |         -------------^^^^^^^^^^
+   |         |
+   |         help: try merging the arm patterns: `(Some(a), ..) | (.., Some(a))`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:68:9
+   |
+LL |         (.., Some(a)) => bar(a), //~ ERROR match arms have same body
+   |         ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:101:9
+   |
+LL |         (Ok(x), Some(_)) => println!("ok {}", x),
+   |         ----------------^^^^^^^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: try merging the arm patterns: `(Ok(x), Some(_)) | (Ok(_), Some(x))`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:102:9
+   |
+LL |         (Ok(_), Some(x)) => println!("ok {}", x),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:117:9
+   |
+LL |         Ok(_) => println!("ok"),
+   |         -----^^^^^^^^^^^^^^^^^^
+   |         |
+   |         help: try merging the arm patterns: `Ok(_) | Ok(3)`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:116:9
+   |
+LL |         Ok(3) => println!("ok"),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:144:9
+   |
+LL |           1 => {
+   |           ^ help: try merging the arm patterns: `1 | 0`
+   |  _________|
+   | |
+LL | |             empty!(0);
+LL | |         },
+   | |_________^
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:141:9
+   |
+LL | /         0 => {
+LL | |             empty!(0);
+LL | |         },
+   | |_________^
+
+error: match expression looks like `matches!` macro
+  --> $DIR/match_same_arms2.rs:162:16
+   |
+LL |       let _ans = match x {
+   |  ________________^
+LL | |         E::A => false,
+LL | |         E::B => false,
+LL | |         _ => true,
+LL | |     };
+   | |_____^ help: try this: `!matches!(x, E::A | E::B)`
+   |
+   = note: `-D clippy::match-like-matches-macro` implied by `-D warnings`
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:194:9
+   |
+LL |         Foo::X(0) => 1,
+   |         ---------^^^^^
+   |         |
+   |         help: try merging the arm patterns: `Foo::X(0) | Foo::Z(_)`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:196:9
+   |
+LL |         Foo::Z(_) => 1,
+   |         ^^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:204:9
+   |
+LL |         Foo::Z(_) => 1,
+   |         ---------^^^^^
+   |         |
+   |         help: try merging the arm patterns: `Foo::Z(_) | Foo::X(0)`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:202:9
+   |
+LL |         Foo::X(0) => 1,
+   |         ^^^^^^^^^^^^^^
+
+error: this match arm has an identical body to another arm
+  --> $DIR/match_same_arms2.rs:227:9
+   |
+LL |         Some(Bar { y: 0, x: 5, .. }) => 1,
+   |         ----------------------------^^^^^
+   |         |
+   |         help: try merging the arm patterns: `Some(Bar { y: 0, x: 5, .. }) | Some(Bar { x: 0, y: 5, .. })`
+   |
+   = help: or try changing either arm body
+note: other arm here
+  --> $DIR/match_same_arms2.rs:224:9
+   |
+LL |         Some(Bar { x: 0, y: 5, .. }) => 1,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 12 previous errors
+
