@@ -24,4 +24,7 @@ $ ./x.py build && ./x.py install
 ## Download Vanilla LLVM-14.0.0 
 [[Here]](https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz)
 
-
+## Test Cases 
+For more details, please refer to Section 5 "Implementation and Evaluation" in our paper.
+- Please see [Micro_Benchmarks](https://github.com/yzhang71/Rust_C_Benchmarks/tree/main/Micro_Benchmarks)
+- Please see [Performance_Benchmarks](https://github.com/yzhang71/Rust_C_Benchmarks/tree/main/Performance_Benchmarks)
