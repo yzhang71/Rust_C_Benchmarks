@@ -452,6 +452,10 @@ impl<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>> FunctionCx<'a, 'tcx, Bx> {
             return;
         }
 
+        // Modify to disable the run-time checks
+        helper.funclet_br(self, &mut bx, target);
+        return;
+
         // Pass the condition through llvm.expect for branch hinting.
         let cond = bx.expect(cond, expected);
 
