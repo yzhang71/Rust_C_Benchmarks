@@ -1,10 +1,10 @@
 pub fn comb_sort(arr: &mut Vec<i32>) {
     let mut gap = arr.len();
-    let shrink = 2.0;
+    let shrink = 2;
     let mut sorted = false;
 
     while !sorted {
-        gap = (gap as f32 / shrink).floor() as usize;
+        gap = gap / shrink;
         if gap <= 1 {
             gap = 1;
             sorted = true;
@@ -32,4 +32,3 @@ fn main() {
         comb_sort(&mut arr);
     }
 }
-

@@ -1,24 +1,25 @@
-pub fn manacher(s: String) -> String {
-    let l = s.len();
+pub fn manacher(s: &Vec<char>) -> String {
 
     // MEMO: We need to detect odd palindrome as well,
     // therefore, inserting dummy string so that
     // we can find a pair with dummy center character.
-    let mut chars: Vec<char> = Vec::with_capacity(s.len() * 2 + 1);
-    for c in s.chars() {
+    let mut chars: Vec<char> = Vec::with_capacity(64 * 2 + 1);
+    for c in s {
         chars.push('#');
-        chars.push(c);
+        chars.push(*c);
     }
     chars.push('#');
 
+    // println!("{:?}", chars.len());
+
     // List: storing the length of palindrome at each index of string
-    let mut length_of_palindrome = vec![1usize; chars.len()];
+    let mut length_of_palindrome = vec![1usize; 129];
     // Integer: Current checking palindrome's center index
     let mut current_center: usize = 0;
     // Integer: Right edge index existing the radius away from current center
     let mut right_from_current_center: usize = 0;
 
-    for i in 0..chars.len() {
+    for i in 0..129 {
         // 1: Check if we are looking at right side of palindrome.
         if right_from_current_center > i && i > current_center {
             // 1-1: If so copy from the left side of palindrome.
@@ -33,7 +34,7 @@ pub fn manacher(s: String) -> String {
                 right_from_current_center = length_of_palindrome[i] + i;
                 // 1-3: If radius exceeds the end of list, it means checking is over.
                 // You will never get the larger value because the string will get only shorter.
-                if right_from_current_center >= chars.len() - 1 {
+                if right_from_current_center >= 129 - 1 {
                     break;
                 }
             } else {
@@ -51,7 +52,7 @@ pub fn manacher(s: String) -> String {
         radius += 1;
         // 2: Checking palindrome.
         // Need to care about overflow usize.
-        while i >= radius && i + radius <= chars.len() - 1 && chars[i - radius] == chars[i + radius]
+        while i >= radius && i + radius <= 129 - 1 && chars[i - radius] == chars[i + radius]
         {
             length_of_palindrome[i] += 2;
             radius += 1;
@@ -73,8 +74,9 @@ pub fn manacher(s: String) -> String {
 }
 
 fn main() {
+    let a: Vec<_> = "kidcpbtdcyplnmovuawllcczdvheopmspomaramovvhulzistnfiacddrtqagavl".chars().collect();
     for i in 0..4000000 {
-        manacher("kidcpbtdcyplnmovuawllcczdvheopmspomaramovvhulzistnfiacddrtqagavl".to_string());
+        manacher(&a);
     }
 }
 
