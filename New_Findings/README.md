@@ -5,8 +5,8 @@ After measuring the performance of algorithms from micro benchmarks, we observe 
 
 ## Finding 1
 Rust uses saturating floating-point to integer conversions for type casting, which is conservative but incurs extra run-time overheads.
-- Please see Finding 1 section
+- Please see [Finding_1](https://anonymous.4open.science/r/Rust_C_Benchmarks-6278/New_Findings/Finding_1/README.md)
 
 ## Finding 2
 The Unicode encoding design guarantees the safety of strings in Rust, but it introduces extra overheads for modifying string data type.
-- Please see Finding 2 section
+- Please see [Finding_2](https://anonymous.4open.science/r/Rust_C_Benchmarks-6278/New_Findings/Finding_2/README.md)
