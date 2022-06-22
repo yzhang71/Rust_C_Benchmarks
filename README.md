@@ -26,5 +26,5 @@ $ ./x.py build && ./x.py install
 
 ## Test Cases 
 For more details, please refer to Section III "Performance Comparison: Rust v.s. C" in our paper.
-- Please see [Micro_Benchmarks](https://github.com/yzhang71/Rust_C_Benchmarks/tree/main/Micro_Benchmarks)
-- Please see [Performance_Benchmarks](https://github.com/yzhang71/Rust_C_Benchmarks/tree/main/Performance_Benchmarks)
+- Please see [Micro_Benchmarks](https://anonymous.4open.science/r/Rust_C_Benchmarks-15F9/Micro_Benchmarks/README.md)
+- Please see [Performance_Benchmarks](https://anonymous.4open.science/r/Rust_C_Benchmarks-15F9/Performance_Benchmarks/README.md)
