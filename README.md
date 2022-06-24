@@ -6,7 +6,7 @@ Rust is a statically-typed programming language developed for efficiency and saf
 ## Building Environment
 Rustc and llvm arre supported by different Ubuntu versions. For reproductive experiments, we recommend you to build them on Ubuntu 18.04 LTS 64bit.
 
-### Build Vanilla rust-1.61.0 from source code
+#### Build Vanilla rust-1.61.0 from source code
 ```
 $ git clone https://github.com/rust-lang/rust.git
 $ cd rust
@@ -15,15 +15,16 @@ $ ./x.py build && ./x.py install
 ```
 To build and install Cargo, you may run ```./x.py install cargo``` or set the ```build.extended``` key in ```config.toml``` to true to build and install all tools.
 
-### Build Modified rust-1.61.0 from source code (in this repository)
+#### Build Modified rust-1.61.0 from source code (in this repository)
 ```
 $ cd rust-1.61.0-modified
 $ cp config.toml.example config.toml
 $ ./x.py build && ./x.py install
 ```
 
-### Download Vanilla LLVM-14.0.0 
-[[Here]](https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz)
+#### Download Vanilla LLVM-14.0.0 
+
+It can be downloaded and installed from [[here]](https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz).
 
 ## Test Cases 
 For more details, please refer to Section III "Performance Comparison: Rust v.s. C" in our paper.
