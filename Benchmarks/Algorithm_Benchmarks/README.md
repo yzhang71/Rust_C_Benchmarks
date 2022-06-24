@@ -1,4 +1,4 @@
-# Micro Benchmarks
+# Algorithm Benchmarks
 
 ## Overview
 Intending to provide an as comprehensively as possible performance comparison between Rust and C, we collect 22 real-world, publicly available and famous algorithms implementation in both Rust version and C version for micro benchmarks.
