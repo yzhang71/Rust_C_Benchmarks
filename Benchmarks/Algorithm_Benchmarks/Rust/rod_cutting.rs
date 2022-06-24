@@ -31,6 +31,7 @@ pub fn rod_cut(p: &mut Vec<i32>, n : usize) -> i32 {
 }
 
 use std::io::{self, BufRead};  
+use std::time::{Duration, Instant}; 
 fn main() {
     let reader = io::stdin();
     let mut arr: Vec<i32> = 
@@ -40,8 +41,12 @@ fn main() {
               .map(|s| s.parse().unwrap())
               .collect();
     let n = arr.len();
+    let start = Instant::now();
     for i in 0..3000000 {
         rod_cut(&mut arr, n);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>     /// for dynammic memory allocation
+#include <time.h> 
 
 // m is size of coins array (number of different coins) 
 int minCoins(int coins[], int m, int V, int *k) 
@@ -49,11 +50,19 @@ int main(int argc, const char *argv[]) {
 
     int k = 0;
     int V = 98564;
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
     for (int i = 0; i < 500; i++)
     {
         
         minCoins(numbers, 97, V, &k);
 
-    } 
+    }
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent); 
     return k; 
 }

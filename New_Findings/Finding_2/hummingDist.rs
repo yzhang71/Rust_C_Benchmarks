@@ -11,7 +11,9 @@ pub fn hamming_distance(string1: &Vec<char>, string2: &Vec<char>) -> usize {
     return distance;
 }
 
+use std::time::{Duration, Instant}; 
 fn main() {
+    let start = Instant::now();
     let a: Vec<_> = "geekspracticehguisdhgiiuweyriuwehiiuweyriuwehfwebfuwebguyuheruihgvuyebghuiiuweyriuwehfwebfuwebguyuheruihgvuyebghuyveuyrghfiuhwueyveuyrghfiuhwuefwebfuwebguyuheruiiuweyriuwehfwebfuwebguyuheruihgvuyebghuyveuyrghfiuhwueihgvuyebghuyveuyrghfiuhwueihfiiuweyriuwehfwebfuwebguyuheruihgvuyebghuyveuyrghfiuhwueiwuehuyfgbwuybfviyuwehbiufh".chars().collect();
     let b: Vec<_> = "nerdspractiseeruhfiuerhgbgtreughiuewriiuweyriuwehfwebfuwebguyiiuweyriuwehfwebfuwebguyuheruihgvuyebghuyveuyrghfiuhwueuheruihgvuyebghuyveuyrghfiuhwuehfiuwiiuweyriuwehfwebfuwebguyuheruihgvuyebghuyveuyrghfiuhwueehfuibuyweiiuweyriuwehfwebfuwebguyuheruihgvuyebghuyveuyrghfiuhwuebiughneruijhfoweifjwoeijguibhniurteboehjoirwhjeoifhoou".chars().collect();
 
@@ -21,5 +23,8 @@ fn main() {
 
     }
     println!("{:?}", result);
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

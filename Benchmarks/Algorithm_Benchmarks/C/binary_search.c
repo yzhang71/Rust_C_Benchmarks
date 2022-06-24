@@ -11,6 +11,7 @@
 #include <stdbool.h>    /// for bool
 #include <stdio.h>      /// for IO operations
 #include <stdlib.h>     /// for dynammic memory allocation
+#include <time.h> 
 
 /** Iterative implementation
  * \param[in] arr array to search
@@ -58,6 +59,10 @@ int main(int argc, const char *argv[]) {
     }
 
     int k = 0;
+	
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
 
     for (int i = 0; i < 300000000; i++)
 
@@ -67,5 +72,11 @@ int main(int argc, const char *argv[]) {
         k = k + binarysearch2(numbers, 0, n, 284, &z);
 
     }
+
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
     return k;
 }

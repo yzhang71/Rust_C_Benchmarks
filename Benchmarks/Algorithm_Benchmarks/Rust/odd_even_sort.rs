@@ -27,7 +27,8 @@ pub fn odd_even_sort(arr: &mut Vec<i32>, len : usize) {
     }
 }
 
-use std::io::{self, BufRead};  
+use std::io::{self, BufRead}; 
+use std::time::{Duration, Instant};  
 fn main() {
     let reader = io::stdin();
     let mut arr: Vec<i32> = 
@@ -37,8 +38,12 @@ fn main() {
               .map(|s| s.parse().unwrap())
               .collect();
     let len = arr.len();
+    let start = Instant::now();
     for i in 0..2000000 {
         odd_even_sort(&mut arr, 1372);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

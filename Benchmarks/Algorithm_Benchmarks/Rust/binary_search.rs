@@ -19,7 +19,8 @@ pub fn binary_search(k: i32, items: &mut Vec<i32>) -> usize {
     1
 }
 
-use std::io::{self, BufRead};  
+use std::io::{self, BufRead}; 
+use std::time::{Duration, Instant};  
 fn main() {
     let reader = io::stdin();
     let mut arr: Vec<i32> = 
@@ -29,8 +30,12 @@ fn main() {
               .map(|s| s.parse().unwrap())
               .collect();
     let mut cnt = 0;
+    let start = Instant::now();
     for i in 0..300000000 {
         cnt = binary_search(284, &mut arr);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

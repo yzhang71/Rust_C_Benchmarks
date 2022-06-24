@@ -55,8 +55,9 @@ pub fn knapsack(w: usize, weights: Vec<usize>, values: Vec<usize>) -> usize {
     // Return result
     m[n][w]
 }
-
+use std::time::{Duration, Instant};
 fn main() {
+    let start = Instant::now();
     for i in 0..100000 {
         knapsack(
             750,
@@ -64,4 +65,7 @@ fn main() {
             vec![135, 139, 149, 150, 156, 163, 173, 184, 192, 201, 210, 214, 221, 229, 240]
         );
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }

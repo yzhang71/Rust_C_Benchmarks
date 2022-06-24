@@ -73,10 +73,15 @@ pub fn manacher(s: &Vec<char>) -> String {
     answer.replace("#", "")
 }
 
+use std::time::{Duration, Instant}; 
 fn main() {
     let a: Vec<_> = "kidcpbtdcyplnmovuawllcczdvheopmspomaramovvhulzistnfiacddrtqagavl".chars().collect();
+    let start = Instant::now();
     for i in 0..4000000 {
         manacher(&a);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

@@ -20,6 +20,7 @@ pub fn comb_sort(arr: &mut Vec<i32>) {
 }
 
 use std::io::{self, BufRead};  
+use std::time::{Duration, Instant}; 
 fn main() {
     let reader = io::stdin();
     let mut arr: Vec<i32> = 
@@ -28,7 +29,11 @@ fn main() {
               .trim().split(' ')
               .map(|s| s.parse().unwrap())
               .collect();
+    let start = Instant::now();
     for i in 0..10000000 {
         comb_sort(&mut arr);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }

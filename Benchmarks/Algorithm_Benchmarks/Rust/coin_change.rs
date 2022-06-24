@@ -30,6 +30,7 @@ pub fn coin_change(coins: &mut Vec<usize>, amount: usize) -> Option<usize> {
 }
 
 use std::io::{self, BufRead};  
+use std::time::{Duration, Instant}; 
 fn main() {
     let reader = io::stdin();
     let mut arr: Vec<usize> = 
@@ -38,7 +39,11 @@ fn main() {
               .trim().split(' ')
               .map(|s| s.parse().unwrap())
               .collect();
+    let start = Instant::now();
     for i in 0..500 {
         coin_change(&mut arr, 98564);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }

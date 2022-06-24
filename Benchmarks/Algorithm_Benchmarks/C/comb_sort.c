@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h> 
 // #define SHRINK 2  // suggested shrink factor value
 
 void sort(int numbers[], int size)
@@ -38,10 +39,19 @@ int main(int argc, const char *argv[]) {
 
     int size = 10000000;
 
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
+
     /* Intializes random number generator */
     for (int i = 0; i < size; i++) {
 
         sort(numbers, n);
 
     }
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
 }

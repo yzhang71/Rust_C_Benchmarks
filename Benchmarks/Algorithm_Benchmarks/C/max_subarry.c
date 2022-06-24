@@ -5,6 +5,7 @@
 #include <stdbool.h>    /// for bool
 #include <stdio.h>      /// for IO operations
 #include <stdlib.h>     /// for dynammic memory allocation
+#include <time.h> 
 
 static int kadane(int Array[], int n) {
   int max_sum = 0;
@@ -36,12 +37,19 @@ int main(int argc, const char *argv[]) {
     int size = 30000000;
 
     int k = 0;
-
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
     /* Intializes random number generator */
     for (int i = 0; i < size; i++) {
 
          k = kadane(numbers, n);
 
     }
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
     return 0;
 }

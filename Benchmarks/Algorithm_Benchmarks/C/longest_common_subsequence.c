@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include <time.h> 
 
 int max(int a, int b) {
   return (a > b)? a : b;
@@ -78,12 +79,19 @@ int main(void) {
   int XLen = strlen(X);
   int YLen = strlen(Y);
 
+  double time_spent = 0.0;
+ 
+  clock_t begin = clock();
   for (int i = 0; i < 1500; i++)
     {
 
         findLCS(X, Y, XLen, YLen, &a);
 
     }
+  clock_t end = clock();
 
+  time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+  printf("The elapsed time is %f seconds", time_spent);
   return 0;
 }

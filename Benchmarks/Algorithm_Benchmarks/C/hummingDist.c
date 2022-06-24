@@ -3,7 +3,7 @@
 #include <stdbool.h>    /// for bool
 #include <stdio.h>      /// for IO operations
 #include <stdlib.h>     /// for dynammic memory allocation
-
+#include <time.h> 
 // function to calculate Hamming distance
 int hammingDist(char *str1, char *str2)
 {
@@ -27,6 +27,10 @@ int main()
 
     int c = 0;
 
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
+
     for (int i = 0; i < size; i++) {
  
         // function call
@@ -34,6 +38,11 @@ int main()
     }
     
     printf("%d\n", c);
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
     return 0;
 }
 

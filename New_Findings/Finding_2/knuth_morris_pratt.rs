@@ -29,13 +29,16 @@ pub fn knuth_morris_pratt(string: &Vec<char>, pattern: &Vec<char>) -> Vec<usize>
     ret
 }
 
-
+use std::time::{Duration, Instant}; 
 fn main() {
     let a: Vec<_> = "dcpaabtaadaaciaaacdaadrtvaavhaauaalziaastaanfqaaagaaavaaypaalnmaaovaauaaawlaalcaaczaadvaaheaaoaapmaaspaaabaabaaaaa".chars().collect();
     let b: Vec<_> = "aa".chars().collect();
-
+    let start = Instant::now();
     for i in 0..10000000 {
         knuth_morris_pratt(&a, &b);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

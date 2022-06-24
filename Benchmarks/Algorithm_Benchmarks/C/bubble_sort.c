@@ -58,9 +58,17 @@ int main(int argc, const char *argv[]) {
     int size = 1000000;
 
     /* Intializes random number generator */
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
     for (int i = 0; i < size; i++) {
 
         bubbleSort(numbers, n);
 
     }
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
 }

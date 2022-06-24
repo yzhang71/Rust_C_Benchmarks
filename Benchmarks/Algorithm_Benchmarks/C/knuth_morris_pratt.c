@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h> 
 void prefixSuffixArray(char* pat, int M, int* pps) {
    int length = 0;
    pps[0] = 0;
@@ -51,11 +51,19 @@ void KMPAlgorithm(char* text, char* pattern, int *k) {
    *k = ite;
 }
 int main() {
+   double time_spent = 0.0;
+ 
+   clock_t begin = clock();
    for (int i = 0; i < 10000000; i++) {
       char text[] = "dcpaabtaadaaciaaacdaadrtvaavhaauaalziaastaanfqaaagaaavaaypaalnmaaovaauaaawlaalcaaczaadvaaheaaoaapmaaspaaabaabaaaaa";
       char pattern[] = "aa";
       int k = 0;
       KMPAlgorithm(text, pattern, &k);
    }
+   clock_t end = clock();
+
+   time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+   printf("The elapsed time is %f seconds", time_spent);
    return 0;
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h> 
 void quicksort(int number[],int first,int last){
    int i, j, pivot, temp;
 
@@ -44,6 +44,9 @@ int main(int argc, const char *argv[]) {
     }
 
     int size = 1000000;
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
 
     /* Intializes random number generator */
     for (int i = 0; i < size; i++) {
@@ -51,5 +54,9 @@ int main(int argc, const char *argv[]) {
         quicksort(numbers, 0, n);
 
     }
+    clock_t end = clock();
 
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
 }

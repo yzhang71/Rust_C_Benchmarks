@@ -16,7 +16,7 @@ pub fn maximum_subarray(array: &[i32]) -> i32 {
 }
 
 use std::io::{self, BufRead};
-
+use std::time::{Duration, Instant}; 
 fn main() {
     let reader = io::stdin();
     let arr: Vec<i32> = 
@@ -26,8 +26,12 @@ fn main() {
               .map(|s| s.parse().unwrap())
               .collect();
     let mut c = 0;
+    let start = Instant::now();
     for i in 0..30000000 {
         c = maximum_subarray(&arr);
     }
     println!("{:?}", c);
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }

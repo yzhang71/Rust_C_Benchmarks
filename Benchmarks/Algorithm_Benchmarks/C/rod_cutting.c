@@ -5,7 +5,7 @@
 #include <stdbool.h>    /// for bool
 #include <stdio.h>      /// for IO operations
 #include <stdlib.h>     /// for dynammic memory allocation
-
+#include <time.h> 
 // A utility function to get the maximum of two integers
 int max(int a, int b) { return (a > b)? a : b;}
 
@@ -48,13 +48,21 @@ int main(int argc, const char *argv[]) {
 
     int k = 0;
 
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
+
     /* Intializes random number generator */
     for (int i = 0; i < size; i++) {
 
         k = k + cutRod(numbers, n, &k);
 
     }
+    clock_t end = clock();
 
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
     return k;
 }
 

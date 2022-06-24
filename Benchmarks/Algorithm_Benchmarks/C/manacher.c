@@ -60,7 +60,9 @@ char* longestPalindrome(char* s) {
 /** Driver Code */
 int main(int argc, const char *argv[])
 {
-
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
     for (int i = 0; i < 4000000; i++)
     {
 
@@ -69,5 +71,10 @@ int main(int argc, const char *argv[])
         longestPalindrome(arr);
 
     }
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
     return 0;
 }

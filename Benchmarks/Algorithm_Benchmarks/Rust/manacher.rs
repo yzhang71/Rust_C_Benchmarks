@@ -71,10 +71,14 @@ pub fn manacher(s: String) -> String {
         .collect::<String>();
     answer.replace("#", "")
 }
-
+use std::time::{Duration, Instant}; 
 fn main() {
+    let start = Instant::now();
     for i in 0..4000000 {
         manacher("kidcpbtdcyplnmovuawllcczdvheopmspomaramovvhulzistnfiacddrtqagavl".to_string());
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

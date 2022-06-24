@@ -31,12 +31,16 @@ pub fn knuth_morris_pratt(st: String, pat: String) -> Vec<usize> {
 
     ret
 }
-
+use std::time::{Duration, Instant}; 
 fn main() {
+    let start = Instant::now();
 
     for i in 0..10000000 {
         knuth_morris_pratt("dcpaabtaadaaciaaacdaadrtvaavhaauaalziaastaanfqaaagaaavaaypaalnmaaovaauaaawlaalcaaczaadvaaheaaoaapmaaspaaabaabaaaaa".to_string(), "aa".to_string());
 
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

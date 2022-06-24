@@ -41,6 +41,7 @@ fn merge_sort(ori: &mut [i32], copy: &mut [i32], low: usize, high: usize) {
  
 }
 use std::io::{self, BufRead};  
+use std::time::{Duration, Instant}; 
 fn main() {
     let reader = io::stdin();
     let mut arr: Vec<i32> = 
@@ -51,9 +52,12 @@ fn main() {
               .collect();
     let mut copy: Vec<i32> = vec![0; 98];
     copy.clone_from_slice(&arr);
-
+    let start = Instant::now();
     for i in 0..1000000 {
         merge_sort(&mut arr,&mut copy,0,97);
     }
+    let duration = start.elapsed();
+
+    println!("Time elapsed is: {:?}", duration);
 }
 

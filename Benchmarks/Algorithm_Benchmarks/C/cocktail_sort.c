@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h> 
 
 void Swap(int* a, int* b)
 {
@@ -51,10 +52,20 @@ int main(int argc, const char *argv[]) {
 
     int size = 100000000;
 
+    double time_spent = 0.0;
+ 
+    clock_t begin = clock();
+
     /* Intializes random number generator */
     for (int i = 0; i < size; i++) {
 
         CocktailSort(numbers, n);
 
     }
+
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+ 
+    printf("The elapsed time is %f seconds", time_spent);
 }
