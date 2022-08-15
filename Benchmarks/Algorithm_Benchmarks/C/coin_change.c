@@ -4,7 +4,7 @@
 #include <time.h> 
 
 // m is size of coins array (number of different coins) 
-int minCoins(int coins[], int m, int V, int *k) 
+int minCoins(int coins[], int m, int V) 
 { 
     // table[i] will be storing the minimum number of coins 
     // required for i value.  So table[V] will have result 
@@ -30,7 +30,6 @@ int minCoins(int coins[], int m, int V, int *k)
                   table[i] = sub_res + 1; 
           } 
     }
-    *k = table[V];
     return table[V]; 
 } 
   
@@ -48,7 +47,7 @@ int main(int argc, const char *argv[]) {
         scanf("%d", &numbers[i]);
     }
 
-    int k = 0;
+    volatile int k = 0;
     int V = 98564;
     double time_spent = 0.0;
  
@@ -56,7 +55,7 @@ int main(int argc, const char *argv[]) {
     for (int i = 0; i < 500; i++)
     {
         
-        minCoins(numbers, 97, V, &k);
+        k = minCoins(numbers, 97, V);
 
     }
     clock_t end = clock();

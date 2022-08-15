@@ -11,7 +11,7 @@ int max(int a, int b) { return (a > b)? a : b;}
 
 /* Returns the best obtainable price for a rod of length n and
 price[] as prices of different pieces */
-int cutRod(int price[], int n, int* k)
+int cutRod(int price[], int n)
 {
     int val[n+1];
     val[0] = 0;
@@ -26,7 +26,6 @@ int cutRod(int price[], int n, int* k)
             max_val = max(max_val, price[j] + val[i-j-1]);
         val[i] = max_val;
     }
-    *k = val[n];
 
     return val[n];
 }
@@ -46,7 +45,7 @@ int main(int argc, const char *argv[]) {
 
     int size = 3000000;
 
-    int k = 0;
+    volatile int k = 0;
 
     double time_spent = 0.0;
  
@@ -55,7 +54,7 @@ int main(int argc, const char *argv[]) {
     /* Intializes random number generator */
     for (int i = 0; i < size; i++) {
 
-        k = k + cutRod(numbers, n, &k);
+        k = cutRod(numbers, n);
 
     }
     clock_t end = clock();

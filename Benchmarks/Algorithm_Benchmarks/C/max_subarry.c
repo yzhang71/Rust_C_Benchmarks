@@ -36,7 +36,7 @@ int main(int argc, const char *argv[]) {
 
     int size = 30000000;
 
-    int k = 0;
+    volatile int k = 0;
     double time_spent = 0.0;
  
     clock_t begin = clock();
@@ -49,6 +49,8 @@ int main(int argc, const char *argv[]) {
     clock_t end = clock();
 
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+
+    printf("%d\n", k);
  
     printf("The elapsed time is %f seconds", time_spent);
     return 0;

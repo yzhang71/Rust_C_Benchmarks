@@ -25,7 +25,7 @@ int main()
 
     int size = 10000000;
 
-    int c = 0;
+    volatile int c = 0;
 
     double time_spent = 0.0;
  

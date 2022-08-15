@@ -1,6 +1,6 @@
 pub fn knuth_morris_pratt(st: String, pat: String) -> Vec<usize> {
-    let string = st.into_bytes();
-    let pattern = pat.into_bytes();
+    let string = st.as_bytes().to_vec();
+    let pattern = pat.as_bytes().to_vec();
 
     // build the partial match table
     let mut partial = vec![0];
@@ -15,8 +15,9 @@ pub fn knuth_morris_pratt(st: String, pat: String) -> Vec<usize> {
     // and read 'string' to find 'pattern'
     let mut ret = vec![];
     let mut j = 0;
+    let mut i = 0;
 
-    for (i, &c) in string.iter().enumerate() {
+    for c in string {
         while j > 0 && c != pattern[j] {
             j = partial[j - 1];
         }
@@ -27,6 +28,7 @@ pub fn knuth_morris_pratt(st: String, pat: String) -> Vec<usize> {
             ret.push(i + 1 - j);
             j = partial[j - 1];
         }
+        i += 1;
     }
 
     ret

@@ -1,22 +1,24 @@
-pub fn binary_search(k: i32, items: &mut Vec<i32>) -> usize {
-    let mut low = 0;
-    let mut high = items.len() - 1;
+pub fn binary_search(k: i32, items: &mut Vec<i32>) -> i32 {
 
-    while low <= high {
-        let middle = ((high + low) / 2) as usize;
-        if let current = items[middle] {
-            if current == k {
-                return middle;
-            }
-            if current > k {
-                high = middle - 1
-            }
-            if current < k {
-                low = middle + 1
-            }
+    if items.len() == 0 {
+        return 0;
+    }
+
+    let len_n: usize = items.len();
+    let mut lo: isize = 0;
+    let mut hi: isize = len_n as isize - 1;
+    while lo <= hi {
+        let mid = lo + (hi - lo) / 2;
+        if items[mid as usize] == k {
+            return mid as i32;
+        }
+        if items[mid as usize] > k {
+            hi = mid - 1;
+        } else {
+            lo = mid + 1;
         }
     }
-    1
+    -1
 }
 
 use std::io::{self, BufRead}; 
@@ -36,6 +38,6 @@ fn main() {
     }
     let duration = start.elapsed();
 
-    println!("Time elapsed is: {:?}", duration);
+    println!("Time elapsed is: {:?} {:?}", duration, cnt);
 }
 

@@ -1,28 +1,25 @@
-pub fn odd_even_sort(arr: &mut Vec<i32>, len : usize) {
+pub fn odd_even_sort(arr: &mut Vec<i32>) {
+    let len = arr.len();
+    if len == 0 {
+        return;
+    }
+
     let mut sorted = false;
-
-    let mut i;
-    let mut j;
-
     while !sorted {
         sorted = true;
 
-        i = 1;
-        j = 0;
-
-        while i <= (len - 2) {
+        for i in (1..len - 1).step_by(2) {
             if arr[i] > arr[i + 1] {
                 arr.swap(i, i + 1);
                 sorted = false;
             }
-            i += 2;
         }
-        while j <= (len - 2) {
-            if arr[j] > arr[j + 1] {
-                arr.swap(j, j + 1);
+
+        for i in (0..len - 1).step_by(2) {
+            if arr[i] > arr[i + 1] {
+                arr.swap(i, i + 1);
                 sorted = false;
             }
-            j += 2;
         }
     }
 }
@@ -37,10 +34,10 @@ fn main() {
               .trim().split(' ')
               .map(|s| s.parse().unwrap())
               .collect();
-    let len = arr.len();
+              
     let start = Instant::now();
     for i in 0..2000000 {
-        odd_even_sort(&mut arr, 1372);
+        odd_even_sort(&mut arr);
     }
     let duration = start.elapsed();
 

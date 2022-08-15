@@ -52,12 +52,14 @@ void KMPAlgorithm(char* text, char* pattern, int *k) {
 }
 int main() {
    double time_spent = 0.0;
+
+   char text[] = "dcpaabtaadaaciaaacdaadrtvaavhaauaalziaastaanfqaaagaaavaaypaalnmaaovaauaaawlaalcaaczaadvaaheaaoaapmaaspaaabaabaaaaa";
+   char pattern[] = "aa";
+   int k = 0;
  
    clock_t begin = clock();
    for (int i = 0; i < 10000000; i++) {
-      char text[] = "dcpaabtaadaaciaaacdaadrtvaavhaauaalziaastaanfqaaagaaavaaypaalnmaaovaauaaawlaalcaaczaadvaaheaaoaapmaaspaaabaabaaaaa";
-      char pattern[] = "aa";
-      int k = 0;
+
       KMPAlgorithm(text, pattern, &k);
    }
    clock_t end = clock();

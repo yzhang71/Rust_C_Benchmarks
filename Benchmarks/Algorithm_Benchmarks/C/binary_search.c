@@ -21,28 +21,29 @@
  * \returns location of x assuming array arr[l..r] is present
  * \returns -1 otherwise
  */
-int binarysearch2(const int *arr, int l, int r, int x, int *k)
+int binarysearch2(const int *arr, int l, int r, int x)
 {
-    int mid = l + (r - l) / 2;
 
-    while (arr[mid] != x)
-    {
-        if (r <= l || r < 0)
-            return -1;
-
-        if (arr[mid] > x)
-            // If element is smaller than middle
-            r = mid - 1;
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+ 
+        // Check if x is present at mid
+        if (arr[m] == x)
+            return m;
+ 
+        // If x greater, ignore left half
+        if (arr[m] < x)
+            l = m + 1;
+ 
+        // If x is smaller, ignore right half
         else
-            // Else element is in right subarray
-            l = mid + 1;
-
-        mid = l + (r - l) / 2;
+            r = m - 1;
     }
+ 
+    // if we reach here, then element was
+    // not present
+    return -1;
 
-    // When element is not present in array
-    *k = mid;
-    return mid;
 }
 
 int n = 97;
@@ -58,7 +59,7 @@ int main(int argc, const char *argv[]) {
         scanf("%d", &numbers[i]);
     }
 
-    int k = 0;
+    volatile int k = 0;
 	
     double time_spent = 0.0;
  
@@ -67,9 +68,8 @@ int main(int argc, const char *argv[]) {
     for (int i = 0; i < 300000000; i++)
 
     {
-        int z = 0;
 
-        k = k + binarysearch2(numbers, 0, n, 284, &z);
+        k = binarysearch2(numbers, 0, n, 284);
 
     }
 

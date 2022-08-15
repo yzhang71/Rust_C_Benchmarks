@@ -18,7 +18,7 @@ void reverse(char s[], int length)
     }
 }
 
-// reverse vector of int
+// reverse vector
 int n = 306;
 
 /** Driver Code */
