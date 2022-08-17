@@ -30,13 +30,15 @@ int main()
     int val[] = {135, 139, 149, 150, 156, 163, 173, 184, 192, 201, 210, 214, 221, 229, 240};
     int W = 750;
     int n = sizeof(val)/sizeof(val[0]);
+
+    volatile int k = 0;
     double time_spent = 0.0;
  
     clock_t begin = clock();
     for (int i = 0; i < 100000; i++)
     {
 
-        knapsack(W, wt, val, n);
+        k = knapsack(W, wt, val, n);
 
     }
     clock_t end = clock();
