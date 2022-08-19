@@ -58,8 +58,9 @@ pub fn knapsack(w: usize, weights: Vec<usize>, values: Vec<usize>) -> usize {
 use std::time::{Duration, Instant};
 fn main() {
     let start = Instant::now();
+    let mut c = 0;
     for i in 0..100000 {
-        knapsack(
+        c = knapsack(
             750,
             vec![70, 73, 77, 80, 82, 87, 90, 94, 98, 106, 110, 113, 115, 118, 120],
             vec![135, 139, 149, 150, 156, 163, 173, 184, 192, 201, 210, 214, 221, 229, 240]
