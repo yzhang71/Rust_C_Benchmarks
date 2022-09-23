@@ -31,9 +31,15 @@ For more details, please refer to Section III "Performance Comparison: Rust v.s.
 
 Please refer to the relevant README under the [Benchmarks](./Benchmarks/README.md) path.
 
-- [Algorithm_Benchmarks](./Benchmarks/Algorithm_Benchmarks/README.md)
-- [Performance_Benchmarks](./Benchmarks/Performance_Benchmarks/README.md)
+- [Algorithm_Benchmarks](./Benchmarks/Algorithm_Benchmarks/README.md) [1]
+- [Performance_Benchmarks](./Benchmarks/Performance_Benchmarks/README.md) [2]
 
 ## New Findings
 
 We discovered several new factors that influence Rust run-time performance. [Click here](./New_Findings/README.md) to view.
+
+## References
+
+- [1] The Algorithms-Rust: https://github.com/TheAlgorithms/Rust
+- [2] 22.05 Benchmarks Game: https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html
+
