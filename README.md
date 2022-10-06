@@ -31,6 +31,7 @@ For more details, please refer to Section III "Performance Comparison: Rust v.s.
 
 Please refer to the relevant README under the [Benchmarks](./Benchmarks/README.md) path.
 
+Please note the credit goes to:
 - [Algorithm_Benchmarks](./Benchmarks/Algorithm_Benchmarks/README.md) [1]
 - [Performance_Benchmarks](./Benchmarks/Performance_Benchmarks/README.md) [2]
 
